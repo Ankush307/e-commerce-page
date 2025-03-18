@@ -19,11 +19,22 @@
   font-family: integral-cf;
   src: url("/assets/fonts/Fontspring-integralcf-bold.otf");
 }
+
 body {
   font-family: "Satoshi-normal", sans-serif;
 }
+
 @theme inline {
   --font-integral-cf: "integral-cf", sans-serif;
   --font-satoshi-bold: "Satoshi-bold", sans-serif;
   --font-satoshi-medium: "Satoshi-medium", sans-serif;
+}
+
+@theme {
+  --text-custom-3xl: 32px;
+  --text-custom-6xl: 64px;
+}
+
+@theme {
+  --leading-100: 100%;
 }
