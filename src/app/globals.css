@@ -37,4 +37,9 @@ body {
 
 @theme {
   --leading-100: 100%;
+  --leading-112: 112%;
+}
+
+.about-bg {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(240, 240, 240, 1) 50%);
 }

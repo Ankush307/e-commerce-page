@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Header from '../common/Header'
 import { NUMBERING_LIST } from "@/utils/helper";
 import Image from "next/image";
+import CustomButton from "../common/CustomButton";
 
 const Hero = () => {
   const [count, setCount] = useState(false);
@@ -17,12 +18,10 @@ const Hero = () => {
       <Header />
       <div className="bg-[#F2F0F1] lg:pt-[103px] md:pt-16 pt-10 relative overflow-hidden">
         <div className="container max-lg:flex-col flex mx-auto max-w-[1240px]">
-          <div className="relative max-xl:px-5 max-md:px-4">
+          <div className="relative max-xl:px-5 max-md:px-4 lg:pb-[80px]">
             <h1 className='lg:text-custom-6xl md:text-5xl text-4xl font-bold font-integral-cf leading-100 max-w-[577px]'>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
             <p className='text-black/60 max-w-[545px] py-8 max-sm:text-sm'>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-            <div className="max-w-[358px md:max-w-[210px] max-md:mx-auto ">
-              <button className='py-[15px] md:px-[65.5px] sm:px-[141px] w-full font-satoshi-medium font-medium leading-100 bg-black text-white rounded-full'>Shop Now</button>
-            </div>
+            <CustomButton buttonClass="py-[13px] max-sm:w-full font-medium hover:bg-transparent hover:text-black border-black text-white bg-black px-[67.5px]" buttonText="Shop Now" />
             <div ref={ref} className="pt-12 flex gap-[52px] items-center w-full max-md:flex-wrap max-md:gap-x-[55px] gap-y-4 max-md:justify-center">
               {NUMBERING_LIST.map((item, i) => (
                 <div key={i} className="flex flex-col max-lg:items-center" >
@@ -34,7 +33,7 @@ const Hero = () => {
               ))}
             </div>
           </div>
-          <div className="flex items-center justify-center xl:translate-x-[50px]">
+          <div className="flex items-center lg:items-end justify-center xl:translate-x-[50px]">
             <Image className=" max-sm:translate-x-[10px] min-w-[460px]" height={633} width={700} src='/assets/images/webp/hero-side-img.webp' alt='hero image' />
           </div>
         </div>
