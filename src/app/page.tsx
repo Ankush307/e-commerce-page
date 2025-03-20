@@ -1,4 +1,3 @@
-import AboutDate from "@/components/common/AboutDate";
 import DressStyle from "@/components/home/DressStyle";
 import Hero from "@/components/home/Hero";
 import NewArrivals from "@/components/home/NewArrivals";
@@ -13,7 +12,6 @@ export default function Home() {
       <NewArrivals />
       <TopSelling />
       <DressStyle />
-      <AboutDate />
     </>
   );
 }

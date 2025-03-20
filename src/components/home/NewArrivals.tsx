@@ -1,54 +1,23 @@
 "use client";
-import { NEW_ARRIVALS_LIST } from '@/utils/helper'
-import Image from 'next/image'
-import Link from 'next/link'
-import CustomButton from '../common/CustomButton'
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import { NEW_ARRIVALS_LIST } from "@/utils/helper";
+import CustomSwiper from "../common/CustomSwiper";
+import React from "react";
+import CustomButton from "../common/CustomButton";
+import Heading from "../common/Heading";
 
 const NewArrivals = () => {
     return (
-        <div className='pt-[72px]'>
-            <div className="container mx-auto max-w-[1240px] pb-16 border-b border-b-black/10 max-xl:pl-4">
-                <h3 className='md:text-5xl sm:text-4xl text-custom-3xl font-integral-cf font-bold leading-100 pb-[55px] text-center'>NEW ARRIVALS</h3>
-                <Swiper className=' items-center justify-center gap-5'
-                    slidesPerView={3}
-                    loop={true}
-                    autoplay={{ delay: 3000 }}
-                    modules={[Autoplay, Pagination]}
-                    spaceBetween={20}
-                    breakpoints={{
-                        320: { slidesPerView: 1.7, spaceBetween: 16 },
-                        450: { slidesPerView: 2 },
-                        700: { slidesPerView: 3 },
-                        1024: { slidesPerView: 4 },
-                    }}>
-                    {NEW_ARRIVALS_LIST.map((item, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="bg-[#F0EEED] rounded-[20px] overflow-hidden w-full">
-                                <Link className='' href={'/'}><Image className='rounded-[20px] hover:scale-110 duration-300 w-[198px] h-[200px] sm:h-[298px] sm:w-[295px]' height={298} width={295} src={item.product} alt="nmb" /></Link>
-                            </div>
-                            <p className='md:text-xl font-bold font-satoshi-bold leading-100 pt-4 pb-2'>{item.title}</p>
-                            <div className="flex gap-[13px] items-center pb-2">
-                                <span>{item.stars}</span>
-                                <p className='md:text-sm text-xs leading-100'>{item.reviews} <span className='text-black/60'>5</span> </p>
-                            </div>
-                            <div className="flex items-center gap-2.5">
-                                <p className='md:text-2xl text-xl font-bold font-satoshi-bold leading-100'>{item.price} </p>
-                                <p className='md:text-2xl text-xl font-bold font-satoshi-bold leading-100 text-black/40'>{item.prevPrice}</p>
-                                <button className={`py-1.5 px-[13.5px] sm:text-xs text-[10px] font-medium font-satoshi-medium leading-100 bg-[#FFEAEA] text-[#FF3333] rounded-full ${index === 1 ? "" : index === 3 ? "" : "hidden"} `}>{item.discount}</button>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                <div className="w-full flex justify-center pt-9 items-center max-xl:pr-4">
-                    <CustomButton buttonClass='py-[15px] px-20 max-sm:w-full hover:bg-black hover:text-white' buttonText='View All' />
+        <div className="pt-[72px] max-md:pt-[50px]">
+            <div className="max-w-[1272px] px-4 mx-auto ">
+                <Heading headingClassName="text-center pb-[55px] max-md:pb-8" text="NEW ARRIVALS" />
+                <CustomSwiper myMap={NEW_ARRIVALS_LIST} />
+                <div className="flex justify-center pt-9 max-md:pt-6 pb-12 max-md:pb-10">
+                    <CustomButton buttonText="View All" buttonClass="w-[218px] h-[52px] max-sm:w-full max-sm:text-sm max-sm:h-[46px] border border-black/10 text-black hover:bg-black hover:text-white hover:border-black" />
                 </div>
             </div>
-        </div >
-    )
-}
+            <div className="border border-black/10"></div>
+        </div>
+    );
+};
 
-export default NewArrivals
+export default NewArrivals;

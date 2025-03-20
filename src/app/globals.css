@@ -32,14 +32,26 @@ body {
 
 @theme {
   --text-custom-3xl: 32px;
+  --text-custom-4xl: 40px;
   --text-custom-6xl: 64px;
 }
 
 @theme {
-  --leading-100: 100%;
-  --leading-112: 112%;
+  --color-light-gray: #F0F0F0;
+  --color-off-white: #F2F0F1;
+  --color-dark-gray: #F0EEED;
+  --color-gray: #666666;
+  --color-bold-gray: #999999;
+  --color-red: #FF3333;
+  --color-dark-brown: #4F4631;
+  --color-dark-green: #314F4A;
+  --color-dark-blue: #31344F;
 }
 
 .about-bg {
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(240, 240, 240, 1) 50%);
+}
+
+.footer-icon:hover svg {
+  fill: white !important;
 }

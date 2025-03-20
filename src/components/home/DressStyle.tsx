@@ -5,7 +5,7 @@ import Image from 'next/image'
 const DressStyle = () => {
     return (
         <div className="md:pb-20 pb-[50px] max-xl:px-4">
-            <div className='max-w-[1240px] rounded-[20px] lg:rounded-[40px] bg-[#F2F0F1] container mx-auto pt-10 pb-[27px] lg:pt-[70px] lg:pb-[76px] px-6 md:px-8 lg:px-16'>
+            <div className='max-w-[1240px] rounded-[20px] lg:rounded-[40px] bg-off-white container mx-auto pt-10 pb-[27px] lg:pt-[70px] lg:pb-[76px] px-6 md:px-8 lg:px-16'>
                 <Heading text='BROWSE BY dress STYLE' />
                 <div className="flex flex-col gap-4 md:gap-5 md:pt-10 lg:pt-16 pt-6">
                     <div className="flex max-md:flex-col w-full gap-4 md:gap-5">

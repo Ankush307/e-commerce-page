@@ -26,7 +26,7 @@ const Header = () => {
         </div>
         <div className="flex gap-10 items-center max-lg:gap-6 max-md:gap-3">
           <button onClick={() => setValue(!value)} className="search-icon md:hidden"><SearchIcon /></button>
-          <div className={`w-[557px] bg-[#F0F0F0] py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-28 max-sm:top-[124px] max-md:mx-3 ${value ? "max-md:block" : "max-md:hidden" }`}>
+          <div className={`w-[557px] bg-light-gray py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-28 max-sm:top-[124px] max-md:mx-3 ${value ? "max-md:block" : "max-md:hidden" }`}>
             <label onClick={() => setValue(!value)} htmlFor="search-inp" className="cursor-pointer max-md:hidden"> <SearchIcon /></label>
             <input id="search-inp" type="text" placeholder="Search for products..." className={`placeholder:text-black placeholder:opacity-40 outline-none bg-transparent text-black opacity-40`}/>
           </div>
