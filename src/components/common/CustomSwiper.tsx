@@ -4,52 +4,98 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
-import { ItemsList } from "@/utils/helper";
+import CustomButton from "./CustomButton";
+import Heading from "./Heading";
+import { SellItemsType } from "@/utils/helper";
 
 interface SellItemsProps {
-    myMap: ItemsList[];
+    headingClass?: string;
+    heading: string;
+    itemMap: SellItemsType[];
+    buttonText?: string;
 }
 
-const CustomSwiper = ({ myMap }: SellItemsProps) => {
+const CustomSwiper = ({
+    headingClass,
+    heading,
+    itemMap,
+    buttonText,
+}: SellItemsProps) => {
     return (
         <div className="max-w-[1240px] mx-auto">
+            <Heading headingClassName={`pb-[55px] ${headingClass}`} text={heading} />
             <Swiper
                 slidesPerView={4}
                 spaceBetween={20}
                 breakpoints={{
-                    300: { slidesPerView: 1.5 },
-                    500: { slidesPerView: 2 },
-                    668: { slidesPerView: 3 },
-                    1200: { slidesPerView: 4 },
-                }} className="mySwiper">
-                {myMap.map((item: ItemsList, index: number) => (
+                    0: {
+                        slidesPerView: 1.5,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                    },
+                    1200: {
+                        slidesPerView: 4,
+                    },
+                }}
+                className="mySwiper"
+            >
+                {itemMap.map((item: SellItemsType, index: number) => (
                     <SwiperSlide key={index}>
-                        <Link href={`/product/${item.title.toLowerCase().split(" ").join("-")}`}
-                            className="max-w-[295px] w-full rounded-[20px]">
-                            <div className="bg-custom-gray overflow-hidden group rounded-[20px]">
-                                <Image src={item.image} alt={item.title} width={295} height={298} className="object-cover pointer-events-none" />
+                        <Link
+                            href={`/product/${item.productTitle
+                                .toLocaleLowerCase()
+                                .replaceAll(" ", "-")}`}
+                            className="max-w-[295px] w-full rounded-[20px]"
+                        >
+                            <div className="bg-dark-gray overflow-hidden group rounded-[20px]">
+                                <Image
+                                    src={item.product}
+                                    alt="product"
+                                    width={295}
+                                    height={298}
+                                    className="h-[298px] group-hover:scale-95 object-cover transition-all duration-300 w-[295px]"
+                                />
                             </div>
-                            <p className="font-bold text-xl pt-4 max-lg:text-lg max-md:text-base max-md:pt-[10px] leading-[100%]">{item.title}</p>
-                            <span className="flex items-center py-[8.26px] max-md:py-[4.20px] gap-[13px]">
-                                <span>{item.stars}</span>
-                                <p className="text-sm max-md:text-xs font-normal leading-[100%]">{item.productRating}/<span className="text-black/60">5</span></p>
+                            <p className="font-bold text-xl mt-4 leading-[100%]">
+                                {item.productTitle}
+                            </p>
+                            <span className="flex items-center py-2 gap-[13px]">
+                                <span>{item.productRatingStart}</span>
+                                <p className="text-sm">
+                                    {item.productRating}/<span className="text-gray">5</span>
+                                </p>
                             </span>
-                            <span className="flex gap-2.5 max-md:gap-[5px] items-center">
-                                <p className="font-bold text-2xl max-md:text-xl leading-[100%]">{item.sellingPrice}</p>
-                                {item.marketPrice && (
+                            <span className="flex gap-2.5 items-center">
+                                <p className="font-bold text-2xl leading-[100%]">
+                                    ${item.productPrice}
+                                </p>
+                                {item.price && (
                                     <span className="w-max relative">
-                                        <span className="absolute top-[56%] w-full h-[1px] max-md:text-xl"></span>
-                                        <p className="relative max-md:text-xl text-black/40 text-2xl font-bold">{item.marketPrice}</p>
+                                        <span className="absolute top-[56%] w-full h-[1px] bg-bold-gray"></span>
+                                        <p className="relative text-bold-gray text-2xl font-bold ">
+                                            ${item.price}
+                                        </p>
                                     </span>
                                 )}
                                 {item.discount && (
-                                    <span className="w-[58px] h-[28px] max-md:w-[42px] max-md:h-5 bg-custom-red/10 text-custom-red rounded-[62px] font-xs font-medium max-md:text-[10px] flex items-center justify-center">{item.discount}% </span>
+                                    <span className="py-1.5 px-[13px] bg-red/10 text-red rounded-[62px] font-xs font-medium">
+                                        {item.discount}%
+                                    </span>
                                 )}
                             </span>
                         </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
+            {buttonText && (
+                <div className="w-full flex justify-center items-center pt-[51px]">
+                    <CustomButton
+                        buttonClass="py-[13px] px-[78px] hover:bg-black hover:text-white border-black/10 font-medium"
+                        buttonText={buttonText}
+                    />
+                </div>
+            )}
         </div>
     );
 };

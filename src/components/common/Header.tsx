@@ -30,7 +30,7 @@ const Header = () => {
             <label onClick={() => setValue(!value)} htmlFor="search-inp" className="cursor-pointer max-md:hidden"> <SearchIcon /></label>
             <input id="search-inp" type="text" placeholder="Search for products..." className={`placeholder:text-black placeholder:opacity-40 outline-none bg-transparent text-black opacity-40`}/>
           </div>
-          <div className="cursor-pointer"><ShopCartIcon /></div>
+          <Link href={"/cart"} className="cursor-pointer"><ShopCartIcon /></Link>
         </div>
       </div>
     </div>

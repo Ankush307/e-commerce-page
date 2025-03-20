@@ -9,17 +9,17 @@ const ProductInfo = () => {
     const urlTitle = pathname.split("/").pop()?.toLowerCase().replace(/\s+/g, "-");
 
     const matchedProduct = products.find(item =>
-        item.title.toLowerCase().replace(/\s+/g, "-") === urlTitle
+        item.productTitle.toLowerCase().replace(/\s+/g, "-") === urlTitle
     );
 
-    const [selectedImage, setSelectedImage] = useState(matchedProduct?.image || products[0]?.image || "");
+    const [selectedImage, setSelectedImage] = useState(matchedProduct?.product || products[0]?.product || "");
 
     return (
         <div className="flex gap-3.5 max-[1025px]:justify-center max-md:flex-col-reverse ">
             <div className="flex md:flex-col gap-3 md:gap-3.5">
                 <div className="cursor-pointer rounded-[20px] overflow-hidden"
-                    onClick={() => setSelectedImage(matchedProduct?.image || products[0]?.image || "")}>
-                    <Image src={matchedProduct?.image || products[0]?.image || ""} width={152} height={167} alt="T-Shirt with Tape Details" className="md:w-[152px] w-[111px] rounded-[20px] h-[106px] md:h-[167px] object-cover bg-light-blue" />
+                    onClick={() => setSelectedImage(matchedProduct?.product || products[0]?.product || "")}>
+                    <Image src={matchedProduct?.product || products[0]?.product || ""} width={152} height={167} alt="T-Shirt with Tape Details" className="md:w-[152px] w-[111px] rounded-[20px] h-[106px] md:h-[167px] object-cover bg-light-blue" />
                 </div>
                 <div className="cursor-pointer rounded-[20px] overflow-hidden"
                     onClick={() => setSelectedImage("/assets/images/webp/tape-t-shirt.webp")}>
@@ -31,7 +31,7 @@ const ProductInfo = () => {
                 </div>
             </div>
             <div className="rounded-[20px] bg-light-blue overflow-hidden">
-                <Image src={selectedImage} width={444} height={530} alt="Selected Product" className="md:w-[444px] w-full h-[290px] md:h-[530px] object-cover" />
+                <Image src={selectedImage} width={444} height={530} alt="Selected Product" className="md:w-[444px] w-full h-[290px] md:h-[530px] object-cover rounded-[20px]" />
             </div>
         </div>
     );

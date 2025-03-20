@@ -1,4 +1,5 @@
 import ProductDetails from '@/components/details/ProductDetails'
+import RelatedProduct from '@/components/details/RelatedProduct'
 import UserReview from '@/components/details/UserReview'
 import React from 'react'
 
@@ -7,7 +8,7 @@ const page = () => {
         <div>
             <ProductDetails />
             <UserReview />
-            
+            <RelatedProduct />
         </div>
     )
 }

@@ -36,93 +36,145 @@ export const BRAND_LIST = [
     <PradaLogo logoClassName="max-sm:w-[127px]" />,
     <CalvinKleinLogo logoClassName="max-sm:w-[134px]" />,
 ];
-export interface ItemsList {
-    image: string;
-    title: string;
-    stars: any;
+export interface SellItemsType {
+    product: string;
+    productImageTwo?: string;
+    productImageThree?: string;
+    productTitle: string;
+    productRatingStart: any;
     productRating: number;
-    sellingPrice: string;
-    discount: string;
-    marketPrice: string;
+    productPrice: number;
+    discount?: number;
+    price?: number;
+    productDescription: string;
 }
 
-export const NEW_ARRIVALS_LIST: ItemsList[] = [
+export const NEW_ARRIVALS_LIST: SellItemsType[] = [
     {
-        image: "/assets/images/webp/tape-t-shirt.webp",
-        title: "T-shirt with Tape Details",
-        stars: <FourHalfStarIcon />,
+        product: "/assets/images/webp/tape-t-shirt.webp",
+        productTitle: "T-shirt with Tape Details",
+        productRatingStart: <FourHalfStarIcon />,
         productRating: 4.5,
-        sellingPrice: "$120",
-        marketPrice: "",
-        discount: "",
+        productPrice: 120,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
     {
-        image: "/assets/images/webp/skinny-jeans.webp",
-        title: "Skinny Fit Jeans",
-        stars: <ThreeHalfStarIcon />,
-        productRating: 3.5,
-        sellingPrice: "$240",
-        marketPrice: "$260",
-        discount: "-20",
+        product: "/assets/images/webp/skinny-jeans.webp",
+        productTitle: "Skinny Fit Jeans",
+        productRatingStart: <FourHalfStarIcon />,
+        productRating: 4.5,
+        productPrice: 240,
+        discount: -20,
+        price: 260,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
     {
-        image: "/assets/images/webp/checkered-shirt.webp",
-        title: "Checkered Shirt",
-        stars: <FourHalfStarIcon />,
+        product: "/assets/images/webp/checkered-shirt.webp",
+        productTitle: "Checkered Shirt",
+        productRatingStart: <FourHalfStarIcon />,
         productRating: 4.5,
-        sellingPrice: "$180",
-        marketPrice: "",
-        discount: "",
+        productPrice: 180,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
     {
-        image: "/assets/images/webp/sleeve-t-shirt.webp",
-        title: "Sleeve Striped T-shirt",
-        stars: <FourHalfStarIcon />,
+        product: "/assets/images/webp/sleeve-t-shirt.webp",
+        productTitle: "Sleeve Striped T-shirt",
+        productRatingStart: <FourHalfStarIcon />,
         productRating: 4.5,
-        sellingPrice: "$130",
-        marketPrice: "$160",
-        discount: "-30",
+        productPrice: 130,
+        discount: -30,
+        price: 160,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    },
+];
+export const TOP_SELLING_LIST: SellItemsType[] = [
+    {
+        product: "/assets/images/webp/vertical-striped-shirt.webp",
+        productTitle: "Vertical Striped Shirt",
+        productRatingStart: <FiveStarIcon />,
+        productRating: 5,
+        productPrice: 212,
+        discount: -20,
+        price: 232,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    },
+    {
+        product: "/assets/images/webp/graphic-t-shirt.webp",
+        productTitle: "Courage Graphic T-shirt",
+        productRatingStart: <FourStarIcon />,
+        productRating: 4,
+        productPrice: 145,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    },
+    {
+        product: "/assets/images/webp/loose-fit-short.webp",
+        productTitle: "Loose Fit Bermuda Shorts",
+        productRatingStart: <ThreeStarIcon />,
+        productRating: 3,
+        productPrice: 80,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    },
+    {
+        product: "/assets/images/webp/faded-skinny-jeans.webp",
+        productTitle: "Faded Skinng Jeans",
+        productRatingStart: <FourHalfStarIcon />,
+        productRating: 4.5,
+        productPrice: 210,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
 ];
 
-export const TOP_SELLING_LIST: ItemsList[] = [
+export const ALSO_LIST_LIST: SellItemsType[] = [
     {
-        image: "/assets/images/webp/vertical-striped-shirt.webp",
-        title: "Vertical Striped Shirt",
-        stars: <FiveStarIcon />,
-        productRating: 5,
-        marketPrice: "$232",
-        sellingPrice: "$212",
-        discount: "-20",
-    },
-    {
-        image: "/assets/images/webp/graphic-t-shirt.webp",
-        title: "Courage Graphic T-shirt",
-        stars: <FourStarIcon />,
+        product: "/assets/images/webp/polo-with-contrast-trims.webp",
+        productTitle: "Polo with Contrast Trims",
+        productRatingStart: <FourStarIcon />,
         productRating: 4,
-        marketPrice: "",
-        sellingPrice: "$145",
-        discount: "",
+        productPrice: 212,
+        discount: -20,
+        price: 222,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
     {
-        image: "/assets/images/webp/loose-fit-short.webp",
-        title: "Loose Fit Bermuda Shorts",
-        stars: <ThreeStarIcon />,
+        product: "/assets/images/webp/gradient-graphic-t-shirt.webp",
+        productTitle: "Gradient Graphic T-shirt",
+        productRatingStart: <ThreeHalfStarIcon />,
         productRating: 3,
-        marketPrice: "",
-        sellingPrice: "$80",
-        discount: "",
+        productPrice: 145,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
     {
-        image: "/assets/images/webp/faded-skinny-jeans.webp",
-        title: "Faded Shinny Jeans",
-        stars: <FourHalfStarIcon />,
+        product: "/assets/images/webp/polo-with-tipping-details.webp",
+        productTitle: "Polo with Tipping Details",
+        productRatingStart: <FourHalfStarIcon />,
         productRating: 4.5,
-        marketPrice: "",
-        sellingPrice: "$210",
-        discount: "",
+        productPrice: 180,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    },
+    {
+        product: "/assets/images/webp/black-striped-t-shirt.webp",
+        productTitle: "Black Striped T-shirt",
+        productRatingStart: <FourHalfStarIcon />,
+        productRating: 4.5,
+        productPrice: 120,
+        discount: -30,
+        price: 150,
+        productDescription:
+            "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
 ];
+
 
 export const FOOTER_LIST = [
     {
