@@ -1,8 +1,9 @@
 "use client";
-import { DeleteIcon, PlusIcon, SubtractIcon } from "@/utils/icons";
+import { DeleteIcon, NextMoveIcon, PlusIcon, SubtractIcon } from "@/utils/icons";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import OrderSummary from "./OrderSummary";
+import Link from "next/link";
 
 interface CartItem {
     id: string;
@@ -39,9 +40,14 @@ const Cart = () => {
 
     return (
         <div className="px-4 md:pb-20 pb-[50px]">
-            <div className="max-w-[1240px] w-full mx-auto">
+            <div className="max-w-[1240px] w-full mx-auto border-t border-light-gray">
+                <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto md:my-6 my-5 ">
+                    <Link href="/" className="text-[#00000099] text-base font-medium leading-[100%]">Home</Link>
+                    <NextMoveIcon />
+                    <p className="text-[#00000099] text-base font-medium leading-[100%]">Cart</p>
+                    <NextMoveIcon />
+                </div>
                 <h1 className="md:text-custom-4xl text-custom-3xl font-integral-cf font-bold mb-5 md:mb-4">Your Cart</h1>
-
                 {cartItems.length === 0 ? (
                     <p>Your cart is empty.</p>
                 ) : (
@@ -73,7 +79,7 @@ const Cart = () => {
                                 ))}
                             </div>
                         </div>
-                        <OrderSummary total={cartItems.reduce((sum, item) => sum + item.price * item.quantity-cartItems.reduce((sum, item) => sum + item.price * item.quantity * 20 / 100, 0), 0)}
+                        <OrderSummary total={cartItems.reduce((sum, item) => sum + item.price * item.quantity - cartItems.reduce((sum, item) => sum + item.price * item.quantity * 20 / 100, 0), 0)}
                             subtotal={cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)} discount={cartItems.reduce((sum, item) => sum + item.price * item.quantity * 20 / 100, 0)} />
                     </div>
                 )}

@@ -1,15 +1,15 @@
 import ProductDetails from '@/components/details/ProductDetails'
 import RelatedProduct from '@/components/details/RelatedProduct'
 import UserReview from '@/components/details/UserReview'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const page = () => {
     return (
-        <div>
+        <Suspense>
             <ProductDetails />
             <UserReview />
             <RelatedProduct />
-        </div>
+        </Suspense>
     )
 }
 

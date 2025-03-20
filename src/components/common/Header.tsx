@@ -27,7 +27,7 @@ const Header = () => {
             <span className={`w-6 h-0.5 rounded duration-300 ease-linear ${open ? "translate-x-5 opacity-0 bg-white" : "bg-black"}`}></span>
             <span className={`w-6 h-0.5 rounded duration-300 ease-linear ${open ? "-rotate-45 -translate-y-1 bg-white" : "bg-black"}`}></span>
           </div>
-          <Link href="#" className="font-integral-cf font-bold text-[32px] leading-[100%]">SHOP.CO</Link>
+          <Link href="/" className="font-integral-cf font-bold text-[32px] leading-[100%]">SHOP.CO</Link>
         </div>
         <div className={`flex gap-6 items-center max-lg:fixed max-lg:top-0 max-lg:w-full max-lg:h-full duration-300 ease-linear max-lg:justify-center max-lg:flex-col max-lg:bg-black z-10 ${open ? "max-lg:left-0" : "max-lg:-left-full"}`}>
           {HEADER_LIST.map((item, index) => (

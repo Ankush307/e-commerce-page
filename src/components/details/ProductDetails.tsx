@@ -1,19 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { PlusIcon, SelectIcon, SubtractIcon } from "@/utils/icons";
+import { NextMoveIcon, PlusIcon, SelectIcon, SubtractIcon } from "@/utils/icons";
 import { ALSO_LIST_LIST, SELECT_COLOR, SELECT_SIZE } from "@/utils/helper";
 import ProductInfo from "./ProductInfo";
-import { NEW_ARRIVALS_LIST, TOP_SELLING_LIST, } from "@/utils/helper";
+import { NEW_ARRIVALS_LIST, TOP_SELLING_LIST } from "@/utils/helper";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+
+// Define an interface for the cart product
+interface CartProduct {
+    title: string;
+    price: number;
+    image: string;
+    selectedColor: string;
+    selectedSize: string;
+    quantity: number;
+}
 
 const ProductOverview = () => {
     const [buttonText, setButtonText] = useState("Add to Cart");
     const [activeColor, setActiveColor] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState<CartProduct[]>([]);  // Define the state with the correct type
     const pathname = usePathname();
 
     const urlTitle = pathname.split("/").pop()?.toLowerCase().replace(/\s+/g, "-");
@@ -32,8 +42,7 @@ const ProductOverview = () => {
     const handleAddToCart = () => {
         if (!product) return;
         if (buttonText === "Go to Cart") return;
-
-        const selectedProduct = {
+        const selectedProduct: CartProduct = {
             title: product.productTitle,
             price: product.productPrice,
             image: product.product,
@@ -41,18 +50,18 @@ const ProductOverview = () => {
             selectedSize: SELECT_SIZE[activeSize],
             quantity,
         };
-
         const existingCart = [...cart];
         const existingProductIndex = existingCart.findIndex(
             (item) =>
                 item.title === selectedProduct.title &&
                 item.selectedColor === selectedProduct.selectedColor &&
-                item.selectedSize === selectedProduct.selectedSize);
-
+                item.selectedSize === selectedProduct.selectedSize
+        );
         if (existingProductIndex !== -1) {
             existingCart[existingProductIndex].quantity += quantity;
-        } else { existingCart.push(selectedProduct); }
-
+        } else {
+            existingCart.push(selectedProduct);
+        }
         localStorage.setItem("cart", JSON.stringify(existingCart));
         setCart(existingCart);
         Swal.fire({
@@ -71,7 +80,16 @@ const ProductOverview = () => {
     }
 
     return (
-        <div className="max-w-[1240px] mx-auto container pt-[60px] md:pt-20 max-xl:px-4">
+        <div className="max-w-[1240px] mx-auto container pt-5 md:pt-6 max-xl:px-4 border-t border-light-gray">
+            <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto md:mb-[36px] mb-5">
+                <Link href="/" className="text-[#00000099] text-base font-medium leading-[100%]">Home</Link>
+                <NextMoveIcon />
+                <p className="text-[#00000099] text-base font-medium leading-[100%]">Shop</p>
+                <NextMoveIcon />
+                <p className="text-[#00000099] text-base font-medium leading-[100%]">Men</p>
+                <NextMoveIcon />
+                <p className="text-[#000000] text-base font-medium leading-[100%]">T-Shirts</p>
+            </div>
             <div className="flex gap-10 max-[1025px]:flex-col max-lg:items-stretch max-xl:items-center">
                 <ProductInfo product={product} />
                 <div className="max-w-[600px] w-full flex flex-col">
