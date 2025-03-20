@@ -6,21 +6,19 @@ import { ALSO_LIST_LIST, SELECT_COLOR, SELECT_SIZE } from "@/utils/helper";
 import ProductInfo from "./ProductInfo";
 import { NEW_ARRIVALS_LIST, TOP_SELLING_LIST, } from "@/utils/helper";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const ProductOverview = () => {
-    const pathname = usePathname();
-    const urlTitle = pathname.split("/").pop()?.toLowerCase().replace(/\s+/g, "-");
-
-    const products = [...NEW_ARRIVALS_LIST, ...TOP_SELLING_LIST, ...ALSO_LIST_LIST];
-    const product = products.find(
-        (item) => item.productTitle.toLowerCase().replace(/\s+/g, "-") === urlTitle
-    );
-
+    const [buttonText, setButtonText] = useState("Add to Cart");
     const [activeColor, setActiveColor] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [cart, setCart] = useState([]);
-    const [buttonText, setButtonText] = useState("Add to Cart");
+    const pathname = usePathname();
+
+    const urlTitle = pathname.split("/").pop()?.toLowerCase().replace(/\s+/g, "-");
+    const products = [...NEW_ARRIVALS_LIST, ...TOP_SELLING_LIST, ...ALSO_LIST_LIST];
+    const product = products.find((item) => item.productTitle.toLowerCase().replace(/\s+/g, "-") === urlTitle);
 
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -49,14 +47,11 @@ const ProductOverview = () => {
             (item) =>
                 item.title === selectedProduct.title &&
                 item.selectedColor === selectedProduct.selectedColor &&
-                item.selectedSize === selectedProduct.selectedSize
-        );
+                item.selectedSize === selectedProduct.selectedSize);
 
         if (existingProductIndex !== -1) {
             existingCart[existingProductIndex].quantity += quantity;
-        } else {
-            existingCart.push(selectedProduct);
-        }
+        } else { existingCart.push(selectedProduct); }
 
         localStorage.setItem("cart", JSON.stringify(existingCart));
         setCart(existingCart);
@@ -88,10 +83,10 @@ const ProductOverview = () => {
                         <p className="font-bold text-2xl leading-[100%]">${product.productPrice}</p>
                         <span className="w-max relative">
                             <span className="absolute top-[56%] w-full h-[1px] bg-bold-gray"></span>
-                            <p className="relative text-bold-gray text-2xl font-bold"> ${product.price}</p>
+                            <p className="relative text-bold-gray text-2xl font-bold">{product.price ? `$${product.price}` : product.price}</p>
                         </span>
                         {product.discount && (
-                            <span className="py-1.5 px-[13px] bg-red/10 text-red rounded-[62px] font-xs font-medium">-{product.discount}%</span>
+                            <span className="py-1.5 px-[13px] bg-red/10 text-red rounded-[62px] font-xs font-medium">{product.discount}%</span>
                         )}
                     </div>
                     <p className="text-black/60 mt-5 max-md:text-sm">{product.productDescription}</p>
@@ -116,7 +111,9 @@ const ProductOverview = () => {
                             <p className="font-medium">{quantity}</p>
                             <button onClick={() => setQuantity(quantity + 1)}><PlusIcon /></button>
                         </div>
-                        <button onClick={handleAddToCart} className="py-3.5 w-full bg-black text-white rounded-full"> {buttonText}</button>
+                        <Link href={buttonText === "Go to Cart" ? "/cart" : "#"} className="w-full">
+                            <button onClick={handleAddToCart} className="py-3.5 w-full bg-black text-white rounded-full hover:bg-transparent hover:text-black duration-300 border hover:border-black"> {buttonText}</button>
+                        </Link>
                     </div>
                 </div>
             </div>

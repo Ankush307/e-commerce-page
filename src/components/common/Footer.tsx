@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div className="bg-light-gray">
             <div className="max-w-[1272px] px-4 mx-auto">
-                <div className="pt-[150px] pb-[50px] max-md:pb-6 flex items-start justify-between max-lg:flex-wrap">
+                <div className="lg:pt-[150px] md:pt-16 pt-8 pb-[50px] max-md:pb-6 flex items-start justify-between max-lg:flex-wrap">
                     <div>
                         <Link href="/" className="font-integral-cf font-bold text-[33.35px] leading-[100%]">SHOP.CO</Link>
                         <p className="text-black/60 leading-[22px] text-sm pt-[25px] max-lg:pt-4 max-w-[250px] max-xl:max-w-[220px] max-lg:max-w-none"> We have clothes that suit your style and which you’re proud to wear. From women to men. </p>

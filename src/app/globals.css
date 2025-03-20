@@ -56,6 +56,16 @@ body {
   fill: white !important;
 }
 
-button{
+button {
   cursor: pointer;
+}
+
+.happy-swiper .swiper-wrapper .swiper-slide {
+  filter: blur(4px);
+}
+
+.happy-swiper .swiper-wrapper .swiper-slide-active,
+.swiper-slide-next,
+.swiper-slide-prev {
+  filter: blur(0px) !important;
 }

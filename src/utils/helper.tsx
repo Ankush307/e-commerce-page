@@ -1,17 +1,22 @@
-import { CalvinKleinLogo, FiveStarIcon, FourHalfStarIcon, FourStarIcon, GucciLogo, PradaLogo, ThreeHalfStarIcon, ThreeStarIcon, VersaceLogo, ZaraLogo } from "./icons";
+import { CalvinKleinLogo, FiveStarIcon, FourHalfStarIcon, FourStarIcon, GreenCheckedIcon, GucciLogo, PradaLogo, ThreeHalfStarIcon, ThreeStarIcon, VersaceLogo, ZaraLogo } from "./icons";
 
 export const HEADER_LIST = [
     {
         title: "Shop",
         link: "#shop",
+        submenu: [
+            { title: "item 1", link: "#item-1" },
+            { title: "item 2", link: "#item-2" },
+            { title: "item 3", link: "#item-3" },
+        ],
     },
     {
         title: "On Sale",
-        link: "#sale",
+        link: "#on-sale",
     },
     {
         title: "New Arrivals",
-        link: "#arrivals",
+        link: "#new-arrivals",
     },
     {
         title: "Brands",
@@ -288,3 +293,48 @@ export const DETAILS_DEFAULT_LIST = [
 export const SELECT_COLOR = ["bg-dark-brown", "bg-dark-green", "bg-dark-blue"];
 
 export const SELECT_SIZE = ["Small", "Medium", "Large", "X-Large"];
+
+export const HAPPY_CUSTOMERS_LIST = [
+    {
+        rating: <FiveStarIcon />,
+        name: "Sarah M.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”",
+    },
+    {
+        rating: <FiveStarIcon />,
+        name: "Alex K.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”",
+    },
+    {
+        rating: <FiveStarIcon />,
+        name: "James L.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”",
+    },
+    {
+        rating: <FiveStarIcon />,
+        name: "Sarah M.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”",
+    },
+    {
+        rating: <FiveStarIcon />,
+        name: "Alex K.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”",
+    },
+    {
+        rating: <FiveStarIcon />,
+        name: "James L.",
+        icon: <GreenCheckedIcon />,
+        description:
+            "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”",
+    },
+];
