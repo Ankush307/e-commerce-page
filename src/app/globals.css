@@ -55,3 +55,7 @@ body {
 .footer-icon:hover svg {
   fill: white !important;
 }
+
+button{
+  cursor: pointer;
+}
