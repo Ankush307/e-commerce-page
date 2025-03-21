@@ -37,15 +37,17 @@ const Cart = () => {
         setCartItems(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
     };
+    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const discount = cartItems.reduce((sum, item) => sum + item.price * item.quantity * 0.2, 0);
+    const total = subtotal - discount;
 
     return (
         <div className="px-4 md:pb-20 pb-[50px]">
             <div className="max-w-[1240px] w-full mx-auto border-t border-light-gray">
                 <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto md:my-6 my-5 ">
-                    <Link href="/" className="text-[#00000099] text-base font-medium leading-[100%]">Home</Link>
-                    <NextMoveIcon />
-                    <p className="text-[#00000099] text-base font-medium leading-[100%]">Cart</p>
-                    <NextMoveIcon />
+                    <Link href="/" className="text-gray text-base font-medium leading-[100%]">Home</Link>
+                    <NextMoveIcon pathClass="fill-black" />
+                    <p className="text-black text-base font-medium leading-[100%]">Cart</p>
                 </div>
                 <h1 className="md:text-custom-4xl text-custom-3xl font-integral-cf font-bold mb-5 md:mb-4">Your Cart</h1>
                 {cartItems.length === 0 ? (
@@ -64,10 +66,10 @@ const Cart = () => {
                                                 <p className="md:text-xl font-bold leading-[100%]"> {item.title}</p>
                                                 <button className="cursor-pointer" onClick={() => handleRemoveItem(index)}><DeleteIcon /></button>
                                             </div>
-                                            <p className="text-xs md:text-sm leading-[100%] text-black"> Size: <span className="text-gray mt-0.5">{item.selectedSize}</span></p>
-                                            <p className="text-xs md:text-sm leading-[100%] text-black"> Color: <span className="text-gray mt-1">{item.selectedColor}</span></p>
+                                            <p className="text-xs pt-1 md:pt-2 md:text-sm leading-[100%] text-black"> Size: <span className="text-gray mt-0.5">{item.selectedSize}</span></p>
+                                            <p className="text-xs pt-1 md:pt-2 md:text-sm leading-[100%] text-black"> Color: <span className="text-gray mt-1">{item.selectedColor}</span></p>
                                             <div className="flex justify-between mt-1.5 items-baseline">
-                                                <p className="font-bold text-xl md:text-2xl leading-[100%]"> ${item.price * item.quantity}</p>
+                                                <p className="font-bold text-xl md:text-2xl font-satoshi-bold leading-[100%]"> ${item.price * item.quantity}</p>
                                                 <div className="flex px-5 py-3 items-center gap-5 bg-light-gray rounded-[62px]">
                                                     <button onClick={() => handleQuantityChange(index, -1)} className="flex cursor-pointer"><SubtractIcon /></button>
                                                     <p className="font-medium min-w-5 leading-[100%]">{item.quantity}</p>
@@ -79,8 +81,7 @@ const Cart = () => {
                                 ))}
                             </div>
                         </div>
-                        <OrderSummary total={cartItems.reduce((sum, item) => sum + item.price * item.quantity - cartItems.reduce((sum, item) => sum + item.price * item.quantity * 20 / 100, 0), 0)}
-                            subtotal={cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)} discount={cartItems.reduce((sum, item) => sum + item.price * item.quantity * 20 / 100, 0)} />
+                        <OrderSummary total={total} subtotal={subtotal} discount={discount} />
                     </div>
                 )}
             </div>

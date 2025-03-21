@@ -18,7 +18,7 @@ const UserReview = () => {
                     const isActive = tab === itemSlug;
                     return (
                         <div key={index} className={`max-w-[414px] flex justify-center pb-5 border-b-2  relative w-full ${isActive ? " border-black" : "border-transparent"}`}>
-                            <Link href={`?tab=${itemSlug}`} className={`text-center text-xl max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${isActive && "font-medium"}`}>{item} </Link>
+                            <Link scroll={false} href={`?tab=${itemSlug}`} className={`text-center text-xl max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${isActive && "font-medium"}`}>{item} </Link>
                         </div>
                     );
                 })}

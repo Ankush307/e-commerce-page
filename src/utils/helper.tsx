@@ -1,6 +1,23 @@
-import { CalvinKleinLogo, FiveStarIcon, FourHalfStarIcon, FourStarIcon, GreenCheckedIcon, GucciLogo, PradaLogo, ThreeHalfStarIcon, ThreeStarIcon, VersaceLogo, ZaraLogo } from "./icons";
+import { CalvinKleinLogo, FacebookIcon, FiveStarIcon, FourHalfStarIcon, FourStarIcon, GithubIcon, GreenCheckedIcon, GucciLogo, InstagramIcon, PradaLogo, ThreeHalfStarIcon, ThreeStarIcon, TwitterIcon, VersaceLogo, ZaraLogo } from "./icons";
 
-export const HEADER_LIST = [
+interface HeaderListType {
+    title: string;
+    link: string;
+    submenu?: { title: string; link: string }[];
+}
+export interface SellItemsType {
+    product: string;
+    productImageTwo?: string;
+    productImageThree?: string;
+    productTitle: string;
+    productRatingStart: any;
+    productRating: number;
+    productPrice: number;
+    discount?: number;
+    price?: number;
+    productDescription: string;
+}
+export const HEADER_LIST: HeaderListType[] = [
     {
         title: "Shop",
         link: "#shop",
@@ -41,19 +58,6 @@ export const BRAND_LIST = [
     <PradaLogo logoClassName="max-sm:w-[127px]" />,
     <CalvinKleinLogo logoClassName="max-sm:w-[134px]" />,
 ];
-export interface SellItemsType {
-    product: string;
-    productImageTwo?: string;
-    productImageThree?: string;
-    productTitle: string;
-    productRatingStart: any;
-    productRating: number;
-    productPrice: number;
-    discount?: number;
-    price?: number;
-    productDescription: string;
-}
-
 export const NEW_ARRIVALS_LIST: SellItemsType[] = [
     {
         product: "/assets/images/webp/tape-t-shirt.webp",
@@ -136,7 +140,6 @@ export const TOP_SELLING_LIST: SellItemsType[] = [
             "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
 ];
-
 export const ALSO_LIST_LIST: SellItemsType[] = [
     {
         product: "/assets/images/webp/polo-with-contrast-trims.webp",
@@ -179,8 +182,6 @@ export const ALSO_LIST_LIST: SellItemsType[] = [
             "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     },
 ];
-
-
 export const FOOTER_LIST = [
     {
         title: "Company",
@@ -219,7 +220,24 @@ export const FOOTER_LIST = [
         ],
     },
 ];
-
+export const FOOTER_SOCAL_MEDIA_LIST = [
+    {
+        icon: <TwitterIcon />,
+        link: "https://x.com/?lang=en",
+    },
+    {
+        icon: <FacebookIcon />,
+        link: "https://x.com/?lang=en",
+    },
+    {
+        icon: <InstagramIcon />,
+        link: "https://x.com/?lang=en",
+    },
+    {
+        icon: <GithubIcon />,
+        link: "https://x.com/?lang=en",
+    },
+];
 export const PAYMENTS_COMPANY_LIST = [
     {
         image: "/assets/images/svg/visa.svg",
@@ -237,8 +255,6 @@ export const PAYMENTS_COMPANY_LIST = [
         image: "/assets/images/svg/g-pay.svg",
     },
 ];
-export const DETAILS_TABS_LIST = ["Product Details", "Rating & Reviews", "FAQs"];
-
 export const USER_REVIEWS_LIST = [
     {
 
@@ -277,7 +293,6 @@ export const USER_REVIEWS_LIST = [
         uploadDate: "Posted on August 19, 2023",
     },
 ];
-
 export const DETAILS_DEFAULT_LIST = [
     {
         image: "/assets/images/png/detail-product-first.png"
@@ -289,11 +304,6 @@ export const DETAILS_DEFAULT_LIST = [
         image: "/assets/images/png/detail-product-third.png"
     },
 ]
-
-export const SELECT_COLOR = ["bg-dark-brown", "bg-dark-green", "bg-dark-blue"];
-
-export const SELECT_SIZE = ["Small", "Medium", "Large", "X-Large"];
-
 export const HAPPY_CUSTOMERS_LIST = [
     {
         rating: <FiveStarIcon />,
@@ -338,3 +348,6 @@ export const HAPPY_CUSTOMERS_LIST = [
             "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”",
     },
 ];
+export const DETAILS_TABS_LIST = ["Product Details", "Rating & Reviews", "FAQs"];
+export const SELECT_COLOR = ["bg-dark-brown", "bg-dark-green", "bg-dark-blue"];
+export const SELECT_SIZE = ["Small", "Medium", "Large", "X-Large"];

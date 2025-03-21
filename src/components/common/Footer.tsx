@@ -1,4 +1,4 @@
-import { FOOTER_LIST, PAYMENTS_COMPANY_LIST } from "@/utils/helper";
+import { FOOTER_LIST, FOOTER_SOCAL_MEDIA_LIST, PAYMENTS_COMPANY_LIST } from "@/utils/helper";
 import { FacebookIcon, GithubIcon, InstagramIcon, TwitterIcon, } from "@/utils/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,10 +13,9 @@ const Footer = () => {
                         <Link href="/" className="font-integral-cf font-bold text-[33.35px] leading-[100%]">SHOP.CO</Link>
                         <p className="text-black/60 leading-[22px] text-sm pt-[25px] max-lg:pt-4 max-w-[250px] max-xl:max-w-[220px] max-lg:max-w-none"> We have clothes that suit your style and which you’re proud to wear. From women to men. </p>
                         <div className="flex items-center gap-3 pt-[35px] max-lg:pt-5">
-                            <Link href="https://twitter.com" target="_blank" className="size-7 border border-black/20 bg-white rounded-full flex items-center justify-center hover:bg-black transition-all duration-300 footer-icon"><TwitterIcon /></Link>
-                            <Link href="https://facebook.com" target="_blank" className="size-7 border border-black/20 bg-white rounded-full flex items-center justify-center hover:bg-black transition-all duration-300 footer-icon"><FacebookIcon /></Link>
-                            <Link href="https://instagram.com" target="_blank" className="size-7 border border-black/20 bg-white rounded-full flex items-center justify-center hover:bg-black transition-all duration-300 footer-icon"><InstagramIcon /></Link>
-                            <Link href="https://github.com" target="_blank" className="size-7 border border-black/20 bg-white rounded-full flex items-center justify-center hover:bg-black transition-all duration-300 footer-icon"><GithubIcon /></Link>
+                            {FOOTER_SOCAL_MEDIA_LIST.map((item, i) => (
+                                <Link href={item.link} target="_blank" key={i} className="size-7 border border-black/20 bg-white rounded-full flex items-center justify-center hover:bg-black transition-all duration-300 footer-icon">{item.icon} </Link>
+                            ))}
                         </div>
                     </div>
                     {/* Footer Links Section */}
@@ -41,7 +40,7 @@ const Footer = () => {
                         <div className="flex items-center gap-3 max-md:gap-[10.3px] max-md:pt-4">
                             {PAYMENTS_COMPANY_LIST.map((item, i) => (
                                 <div key={i}>
-                                    <Image width={46.61} height={30.3} alt="payment-company" src={item.image} className="pointer-events-none payment-company-images max-md:h-[26px] max-md:w-[40px]"/>
+                                    <Image width={46.61} height={30.3} alt="payment-company" src={item.image} className="pointer-events-none payment-company-images max-md:h-[26px] max-md:w-[40px]" />
                                 </div>
                             ))}
                         </div>

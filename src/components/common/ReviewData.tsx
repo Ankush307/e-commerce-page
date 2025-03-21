@@ -29,9 +29,9 @@ const ReviewsData = () => {
                         <p className="font-bold text-2xl max-md:text-xl leading-[100%]">All Reviews</p>
                         <p className="leading-[100%] text-black/60 text-base">({USER_REVIEWS_LIST.length})</p>
                     </div>
-                    <select onChange={handleSortChange} value={sortOption} className="cursor-pointer text-medium text-base max-md:text-sm leading-[100%] outline-none bg-custom-gray rounded-[62px] font-medium py-[13px] px-5">
-                        <option className="text-medium text-base leading-[100%] max-md:text-sm">Oldest</option>
-                        <option className="text-medium text-base leading-[100%] max-md:text-sm">Latest</option>
+                    <select className="cursor-pointer outline-none appearance-none drop-down-arrow rounded-[62px] font-medium py-[13px] pl-5 pr-[53px] bg-light-gray" value={sortOption} onChange={handleSortChange}>
+                        <option>Oldest</option>
+                        <option>Latest</option>
                     </select>
                 </div>
                 <div className="flex flex-wrap max-w-[1240px] w-full pt-7 lg:gap-x-[1.62%] max-lg:gap-5 gap-y-5">

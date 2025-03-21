@@ -14,8 +14,8 @@ const OrderSummary = ({
     onClick?: () => void;
 }) => {
     return (
-        <div className="max-w-[505px] w-full relative">
-            <div className=" max-h-[458px] lg:sticky lg:top-0 py-5 border border-solid border-black/10 rounded-[20px] w-full px-6 flex flex-col gap-6">
+        <div className="ld:max-w-[505px] w-full relative">
+            <div className="max-h-[458px] lg:sticky lg:top-0 py-5 border border-solid border-black/10 rounded-[20px] w-full px-6 flex flex-col gap-6">
                 <p className="md:text-2xl text-xl font-bold leading-[100%]">Order Summary</p>
                 <div className="flex flex-col w-full gap-5">
                     <div className="flex items-center justify-between">

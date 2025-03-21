@@ -52,7 +52,7 @@ body {
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(240, 240, 240, 1) 50%);
 }
 
-.footer-icon:hover svg {
+.footer-icon:hover svg path{
   fill: white !important;
 }
 
@@ -68,4 +68,10 @@ button {
 .swiper-slide-next,
 .swiper-slide-prev {
   filter: blur(0px) !important;
+}
+
+.appearance-none{
+  background-image: url("/assets/images/webp/drop-down-arrow.webp") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 22px center !important;
 }

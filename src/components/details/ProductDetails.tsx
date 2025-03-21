@@ -7,7 +7,6 @@ import ProductInfo from "./ProductInfo";
 import { NEW_ARRIVALS_LIST, TOP_SELLING_LIST } from "@/utils/helper";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
 // Define an interface for the cart product
 interface CartProduct {
     title: string;
@@ -19,26 +18,27 @@ interface CartProduct {
 }
 
 const ProductOverview = () => {
+    // Define the states
     const [buttonText, setButtonText] = useState("Add to Cart");
     const [activeColor, setActiveColor] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    const [cart, setCart] = useState<CartProduct[]>([]);  // Define the state with the correct type
+    const [cart, setCart] = useState<CartProduct[]>([]);
     const pathname = usePathname();
-
+    // Extract the product title from the URL
     const urlTitle = pathname.split("/").pop()?.toLowerCase().replace(/\s+/g, "-");
     const products = [...NEW_ARRIVALS_LIST, ...TOP_SELLING_LIST, ...ALSO_LIST_LIST];
     const product = products.find((item) => item.productTitle.toLowerCase().replace(/\s+/g, "-") === urlTitle);
-
+    // get the cart from local storage
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
         setCart(storedCart);
     }, []);
-
+    // update the button text
     useEffect(() => {
         setButtonText("Add to Cart");
     }, [activeColor, activeSize, quantity, product]);
-
+    // handle add to cart
     const handleAddToCart = () => {
         if (!product) return;
         if (buttonText === "Go to Cart") return;
@@ -50,6 +50,7 @@ const ProductOverview = () => {
             selectedSize: SELECT_SIZE[activeSize],
             quantity,
         };
+        // The code check if a product match with title, color, size exists in the cart
         const existingCart = [...cart];
         const existingProductIndex = existingCart.findIndex(
             (item) =>
@@ -83,11 +84,11 @@ const ProductOverview = () => {
         <div className="max-w-[1240px] mx-auto container pt-5 md:pt-6 max-xl:px-4 border-t border-light-gray">
             <div className="flex items-center gap-2.5 max-w-[1240px] w-full mx-auto md:mb-[36px] mb-5">
                 <Link href="/" className="text-[#00000099] text-base font-medium leading-[100%]">Home</Link>
-                <NextMoveIcon />
+                <NextMoveIcon pathClass="fill-black/60" />
                 <p className="text-[#00000099] text-base font-medium leading-[100%]">Shop</p>
-                <NextMoveIcon />
+                <NextMoveIcon  pathClass="fill-black/60"/>
                 <p className="text-[#00000099] text-base font-medium leading-[100%]">Men</p>
-                <NextMoveIcon />
+                <NextMoveIcon  pathClass="fill-black/60"/>
                 <p className="text-[#000000] text-base font-medium leading-[100%]">T-Shirts</p>
             </div>
             <div className="flex gap-10 max-[1025px]:flex-col max-lg:items-stretch max-xl:items-center">
@@ -119,7 +120,7 @@ const ProductOverview = () => {
                     <p className="text-black/60">Choose Size</p>
                     <div className="flex gap-3 mt-4">
                         {SELECT_SIZE.map((size, index) => (
-                            <button key={index} className={`cursor-pointer bg-light-gray py-3 px-5 rounded-[62px] ${index === activeSize && "!bg-black text-white"}`} onClick={() => setActiveSize(index)}> {size} </button>
+                            <button key={index} className={`cursor-pointer bg-light-gray max-sm:text-xs py-3 px-5 rounded-[62px] ${index === activeSize && "!bg-black text-white"}`} onClick={() => setActiveSize(index)}> {size} </button>
                         ))}
                     </div>
                     <div className="max-w-[590px] w-full bg-black/10 h-[1px] my-6"></div>
